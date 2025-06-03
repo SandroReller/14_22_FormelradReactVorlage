@@ -1,7 +1,4 @@
 import {useState} from "react";
-import '../css/mvp.css';
-import formelrad from "../image/formelradelektronik.gif";
-
 import formelrad from "../image/formelradelektronik.gif";
 import InputField from "../formular/InputField";
 
@@ -22,7 +19,6 @@ export default function Formelrad() {
                 <InputField color={"black"} value={values.r} label="Widerstand" handleChange={e => {setValues(values => ({...values, r: e.target.value}))}} />
                 <button type="submit">Calculate</button>
             </form>
-
         </>
     )
 }
