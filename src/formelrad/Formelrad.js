@@ -8,8 +8,23 @@ export default function Formelrad() {
         u: 10,
         i: 2,
         r: "",
-        p: ""
+        p: "",
+        message: ""
     });
+
+    const [colors, setColors] = useState({
+        u: "black",
+        i: "black",
+        r: "black",
+        p: "black",
+        message: "red"
+    });
+
+    const handleClear = (event) => {
+        event.preventDefault();
+        console.log("handleClear");
+        setValues(values => ({ ...values, u: "", i: "", r: "", p: "", message: "" }));
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -27,11 +42,38 @@ export default function Formelrad() {
                     <img src={formelrad} width="200" alt="Formelrad" />
                 </header>
                 <form onSubmit={handleSubmit}>
-                    <InputField color={"black"} value={values.u} label="Spannung" handleChange={e => { setValues(values => ({ ...values, u: e.target.value })) }} />
-                    <InputField color={"black"} value={values.i} label="Stromstärke" handleChange={e => { setValues(values => ({ ...values, i: e.target.value })) }} />
-                    <InputField color={"black"} value={values.r} label="Widerstand" handleChange={e => { setValues(values => ({ ...values, r: e.target.value })) }} />
-                    <InputField color={"black"} value={values.p} label="Leistung" handleChange={e => { setValues(values => ({ ...values, p: e.target.value })) }} />
+                    <InputField
+                        color={colors.u}
+                        value={values.u}
+                        label="Spannung"
+                        handleChange={e => { setValues(values => ({ ...values, u: e.target.value })) }}
+                    />
+                    <InputField
+                        color={colors.i}
+                        value={values.i}
+                        label="Stromstärke"
+                        handleChange={e => { setValues(values => ({ ...values, i: e.target.value })) }}
+                    />
+                    <InputField
+                        color={colors.r}
+                        value={values.r}
+                        label="Widerstand"
+                        handleChange={e => { setValues(values => ({ ...values, r: e.target.value })) }}
+                    />
+                    <InputField
+                        color={colors.p}
+                        value={values.p}
+                        label="Leistung"
+                        handleChange={e => { setValues(values => ({ ...values, p: e.target.value })) }}
+                    />
+                    <InputField
+                        color={colors.message}
+                        value={values.message}
+                        label="Message"
+                        handleChange={e => { setValues(values => ({ ...values, message: e.target.value })) }}
+                    />
                     <button type="submit">Calculate</button>
+                    <button style={{ margin: 10 }} onClick={handleClear}>Clear</button>
                 </form>
             </section>
         </>
